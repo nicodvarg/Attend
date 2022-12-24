@@ -3,6 +3,6 @@ import studentRoute from "./student";
 
 const app: Application = express();
 
-app.use(studentRoute);
+app.use("/api/student", studentRoute);
 
 export default app;

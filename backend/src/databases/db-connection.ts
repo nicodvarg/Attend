@@ -1,6 +1,6 @@
 
 interface DBConnection {
-    connect(): void;
+    start(): void;
 }
 
 export default DBConnection;
