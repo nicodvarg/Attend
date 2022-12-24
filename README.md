@@ -1,2 +1,2 @@
 # MiEscuelita
-Aplicación que permite a las escuelas tomar la asistencia de sus estudiantes
+MERN stack application for schools to take student attendance
