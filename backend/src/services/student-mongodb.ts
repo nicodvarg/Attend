@@ -1,8 +1,8 @@
-import Student from "../classes/student";
-import CRUDOperations from "./crud-operations";
-import StudentModel from "../../models/student";
+import Student from "./classes/student";
+import DatabaseOperations from "./database-operations";
+import StudentModel from "../models/student";
 
-class StudentMongoDB implements CRUDOperations {
+class StudentMongoDB implements DatabaseOperations {
     async save(newStudent: Student): Promise<JSON> {
         let studentModel = new StudentModel(newStudent);
         const result: JSON = await studentModel.save()

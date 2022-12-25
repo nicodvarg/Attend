@@ -1,4 +1,4 @@
-interface CRUDOperations {
+interface DatabaseOperations {
     save(objectToSave: Object): Promise<JSON>;
     getAll(): Promise<JSON[]>;
     getOne(): Promise<JSON>;
@@ -7,4 +7,4 @@ interface CRUDOperations {
     delete(): Promise<JSON>;
 }
 
-export default CRUDOperations;
+export default DatabaseOperations;

@@ -28,4 +28,6 @@ const studentSchema: Schema = new Schema({
 
 studentSchema.plugin(uniqueValidator, { message: "{PATH} debe ser único" });
 
-export default model("Student", studentSchema);
+const StudentModel = model("Student", studentSchema);
+
+export default StudentModel;
