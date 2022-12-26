@@ -1,7 +1,7 @@
 {
-  "name": "miescuelita",
+  "name": "attend",
   "version": "1.0.0",
-  "description": "backend de aplicación que permite la toma de asistencia de los estudiantes",
+  "description": "Express API for schools to take student attendance",
   "main": "src/server.ts",
   "scripts": {
     "start": "ts-node .",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicodvarg/MiEscuelita.git"
+    "url": "git+https://github.com/nicodvarg/attend.git"
   },
   "author": "nicodvarg",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/nicodvarg/MiEscuelita/issues"
+    "url": "https://github.com/nicodvarg/attend/issues"
   },
-  "homepage": "https://github.com/nicodvarg/MiEscuelita#readme",
+  "homepage": "https://github.com/nicodvarg/attend#readme",
   "dependencies": {
     "body-parser": "1.20.1",
     "express": "4.18.2",
