@@ -2,7 +2,7 @@ import DatabaseConnection from "./database-connection";
 import mongoose from "mongoose";
 
 class MongoDBConnection implements DatabaseConnection {
-    start(): void {
+    public start(): void {
         mongoose.set("strictQuery", false);
         mongoose.connect(process.env.DBURI!, (err) => {
             if (err) {

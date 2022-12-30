@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import DatabaseOperations from "../services/database-operations";
 import StudentMongoDB from "../services/student-mongodb";
 import Student from "../services/classes/student";
-import { sendResponse } from './utils';
+import { sendOk, sendError400 } from './utils';
 
 class StudentController {
     private database: DatabaseOperations;
@@ -12,12 +12,12 @@ class StudentController {
     }
 
     public async save(req: Request, res: Response): Promise<void> {
-        let student: Student = this.createStudent(req);
         try {
-            const studentSaved = await this.database.save(student);
-            sendResponse(200, studentSaved, res);
+            const newStudent: Student = this.createStudent(req.body);
+            const dbResponse: JSON = await this.database.save(newStudent);
+            sendOk(dbResponse, res);
         } catch (error) {
-            sendResponse(400, error, res);
+            sendError400(error, res);
         }
     }
 
@@ -41,14 +41,16 @@ class StudentController {
 
     }
 
+    private createStudent(studentData: any): Student {
 
-    private createStudent(req: Request): Student {
         let student = new Student();
-        //TODO: Tomar datos del body en request
-        //TODO: Validar datos
-        student.setNID(1)
-        student.setNames("Juan");
-        student.setSurnames("Perez");
+
+        student.setNID(Number(studentData.nid));
+        student.setNames(studentData.names);
+        student.setSurnames(studentData.surnames);
+        student.setDateOfBirth(studentData.dateOfBirth);
+        student.setAddress(studentData.address);
+        student.setContactNumber(studentData.contactNumber);
 
         return student;
     }

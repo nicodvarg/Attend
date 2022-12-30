@@ -3,7 +3,7 @@ import DatabaseOperations from "./database-operations";
 import StudentModel from "../models/student";
 
 class StudentMongoDB implements DatabaseOperations {
-    async save(newStudent: Student): Promise<JSON> {
+    public async save(newStudent: Student): Promise<JSON> {
         let studentModel = new StudentModel(newStudent);
         const result: JSON = await studentModel.save()
             .then((dbResult: any) => {
@@ -16,23 +16,23 @@ class StudentMongoDB implements DatabaseOperations {
         return result;
     }
 
-    async getAll(): Promise<JSON[]> {
+    public async getAll(): Promise<JSON[]> {
         throw new Error("Method not implemented.");
     }
 
-    async getOne(): Promise<JSON> {
+    public async getOne(): Promise<JSON> {
         throw new Error("Method not implemented.");
     }
 
-    async search(): Promise<JSON[]> {
+    public async search(): Promise<JSON[]> {
         throw new Error("Method not implemented.");
     }
 
-    async update(): Promise<JSON> {
+    public async update(): Promise<JSON> {
         throw new Error("Method not implemented.");
     }
 
-    async delete(): Promise<JSON> {
+    public async delete(): Promise<JSON> {
         throw new Error("Method not implemented.");
     }
 }

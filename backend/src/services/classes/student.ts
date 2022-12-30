@@ -1,66 +1,78 @@
 class Student {
-    private nid: Number;
-    private names: String;
-    private surnames: String;
-    private dateOfBirth: Date;
-    private address: String;
-    private contactNumber: String;
+    private nid: number | null;
+    private names: string | null;
+    private surnames: string | null;
+    private dateOfBirth: Date | null;
+    private address: string | null;
+    private contactNumber: string | null;
 
     constructor() {
-        this.nid = -1;
-        this.names = "";
-        this.surnames = "";
-        this.dateOfBirth = new Date(0);
-        this.address = "";
-        this.contactNumber = "";
+        this.nid = null;
+        this.names = null;
+        this.surnames = null;
+        this.dateOfBirth = null;
+        this.address = null;
+        this.contactNumber = null;
     }
 
-    setNID(newNID: Number) {
-        this.nid = newNID;
+    public setNID(newNID: number) {
+        if (newNID)
+            this.nid = newNID;
     }
 
-    getNID(): Number {
+    public getNID(): number | null {
         return this.nid;
     }
 
-    setNames(newNames: String) {
-        this.names = newNames;
+    public setNames(newNames: string) {
+        if (newNames)
+            this.names = newNames;
     }
 
-    getNames(): String {
+    public getNames(): string | null {
         return this.names;
     }
 
-    setSurnames(newSurnames: String) {
-        this.surnames = newSurnames;
+    public setSurnames(newSurnames: string) {
+        if (newSurnames)
+            this.surnames = newSurnames;
     }
 
-    getSurnames(): String {
+    public getSurnames(): string | null {
         return this.surnames;
     }
 
-    setDateOfBirth(newDateOfBirth: Date) {
-        this.dateOfBirth = newDateOfBirth;
+    public setDateOfBirth(newDateOfBirth: string) {
+        if (newDateOfBirth) {
+            this.dateOfBirth = this.getDateFromString(newDateOfBirth);
+        }
     }
 
-    getDateOfBirth(): Date {
+    public getDateOfBirth(): Date | null {
         return this.dateOfBirth;
     }
 
-    setAddress(newAddress: String) {
-        this.address = newAddress;
+    public setAddress(newAddress: string) {
+        if (newAddress)
+            this.address = newAddress;
     }
 
-    getAddress(): String {
+    public getAddress(): string | null {
         return this.address;
     }
 
-    setContactNumber(newContactNumber: String) {
-        this.contactNumber = newContactNumber;
+    public setContactNumber(newContactNumber: string) {
+        if (newContactNumber)
+            this.contactNumber = newContactNumber;
     }
 
-    getContactNumber(): String {
+    public getContactNumber(): string | null {
         return this.contactNumber;
+    }
+
+    private getDateFromString(date: string): Date {
+        let newDate = new Date(Date.parse(date + " 00:00:00"));
+        return newDate;
     }
 
 }
