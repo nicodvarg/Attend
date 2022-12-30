@@ -1,3 +1,5 @@
+import { getDateFromString } from "../utils";
+
 class Student {
     private nid: number | null;
     private names: string | null;
@@ -44,7 +46,7 @@ class Student {
 
     public setDateOfBirth(newDateOfBirth: string) {
         if (newDateOfBirth) {
-            this.dateOfBirth = this.getDateFromString(newDateOfBirth);
+            this.dateOfBirth = getDateFromString(newDateOfBirth);
         }
     }
 
@@ -68,11 +70,6 @@ class Student {
 
     public getContactNumber(): string | null {
         return this.contactNumber;
-    }
-
-    private getDateFromString(date: string): Date {
-        let newDate = new Date(Date.parse(date + " 00:00:00"));
-        return newDate;
     }
 
 }
