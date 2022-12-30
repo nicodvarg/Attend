@@ -3,8 +3,8 @@ import DatabaseOperations from "./database-operations";
 import StudentModel from "../models/student";
 
 class StudentMongoDB implements DatabaseOperations {
-    public async save(newStudent: Student): Promise<JSON> {
-        let studentModel = new StudentModel(newStudent);
+    public async save(student: Student): Promise<JSON> {
+        let studentModel = new StudentModel(student);
         const result: JSON = await studentModel.save()
             .then((dbResult: any) => {
                 return dbResult;

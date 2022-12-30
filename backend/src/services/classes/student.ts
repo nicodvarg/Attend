@@ -1,4 +1,4 @@
-import { getDateFromString } from "../utils";
+import { getDateFromString } from "./utils";
 
 class Student {
     private nid: number | null;
@@ -17,36 +17,36 @@ class Student {
         this.contactNumber = null;
     }
 
-    public setNID(newNID: number) {
-        if (newNID)
-            this.nid = newNID;
+    public setNID(nid: number): void {
+        if (nid)
+            this.nid = nid;
     }
 
     public getNID(): number | null {
         return this.nid;
     }
 
-    public setNames(newNames: string) {
-        if (newNames)
-            this.names = newNames;
+    public setNames(names: string): void {
+        if (names)
+            this.names = names;
     }
 
     public getNames(): string | null {
         return this.names;
     }
 
-    public setSurnames(newSurnames: string) {
-        if (newSurnames)
-            this.surnames = newSurnames;
+    public setSurnames(surnames: string): void {
+        if (surnames)
+            this.surnames = surnames;
     }
 
     public getSurnames(): string | null {
         return this.surnames;
     }
 
-    public setDateOfBirth(newDateOfBirth: string) {
-        if (newDateOfBirth) {
-            this.dateOfBirth = getDateFromString(newDateOfBirth);
+    public setDateOfBirth(dateOfBirth: string): void {
+        if (dateOfBirth) {
+            this.dateOfBirth = getDateFromString(dateOfBirth);
         }
     }
 
@@ -54,18 +54,18 @@ class Student {
         return this.dateOfBirth;
     }
 
-    public setAddress(newAddress: string) {
-        if (newAddress)
-            this.address = newAddress;
+    public setAddress(address: string): void {
+        if (address)
+            this.address = address;
     }
 
     public getAddress(): string | null {
         return this.address;
     }
 
-    public setContactNumber(newContactNumber: string) {
-        if (newContactNumber)
-            this.contactNumber = newContactNumber;
+    public setContactNumber(contactNumber: string): void {
+        if (contactNumber)
+            this.contactNumber = contactNumber;
     }
 
     public getContactNumber(): string | null {

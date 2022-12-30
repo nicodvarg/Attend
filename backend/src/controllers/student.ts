@@ -2,22 +2,24 @@ import { Request, Response } from 'express';
 import DatabaseOperations from "../services/database-operations";
 import StudentMongoDB from "../services/student-mongodb";
 import Student from "../services/classes/student";
-import { sendOk, sendBadRequest } from './utils';
+import Responder from './classes/Responder';
 
 class StudentController {
     private database: DatabaseOperations;
+    private responder: Responder;
 
     constructor() {
         this.database = new StudentMongoDB();
+        this.responder = new Responder
     }
 
     public async save(req: Request, res: Response): Promise<void> {
         try {
-            const newStudent: Student = this.createStudent(req.body);
-            const dbResponse: JSON = await this.database.save(newStudent);
-            sendOk(dbResponse, res);
+            const student: Student = this.createStudent(req.body);
+            const dbResponse: JSON = await this.database.save(student);
+            this.responder.sendOk(dbResponse, res);
         } catch (error) {
-            sendBadRequest(error, res);
+            this.responder.sendBadRequest(error, res);
         }
     }
 
