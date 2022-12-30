@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import DatabaseOperations from "../services/database-operations";
 import StudentMongoDB from "../services/student-mongodb";
 import Student from "../services/classes/student";
-import { sendOk, sendError400 } from './utils';
+import { sendOk, sendBadRequest } from './utils';
 
 class StudentController {
     private database: DatabaseOperations;
@@ -17,7 +17,7 @@ class StudentController {
             const dbResponse: JSON = await this.database.save(newStudent);
             sendOk(dbResponse, res);
         } catch (error) {
-            sendError400(error, res);
+            sendBadRequest(error, res);
         }
     }
 

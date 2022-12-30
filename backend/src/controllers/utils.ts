@@ -1,19 +1,37 @@
 import { Response } from "express";
+import ResponseStatus from "./response-status";
+
+let response: Response;
+let status: number;
 
 function sendOk(data: any, res: Response): void {
-    sendData(200, data, res);
+    setStatus(ResponseStatus.Ok);
+    setResponse(res);
+    sendData(data);
 }
 
-function sendError400(data: any, res: Response): void {
-    sendData(400, data, res);
+function sendBadRequest(data: any, res: Response): void {
+    setStatus(ResponseStatus.BadRequest);
+    setResponse(res);
+    sendData(data);
 }
 
-function sendError500(data: any, res: Response): void {
-    sendData(500, data, res);
+function sendInternalServerError(data: any, res: Response): void {
+    setStatus(ResponseStatus.IntertalServerError);
+    setResponse(res);
+    sendData(data);
 }
 
-function sendData(status: number, data: any, res: Response) {
-    res.status(status).json({
+function setStatus(newStatus: number) {
+    status = newStatus;
+}
+
+function setResponse(newResponse: Response) {
+    response = newResponse;
+}
+
+function sendData(data: any) {
+    response.status(status).json({
         ok: isOkStatus(status),
         data
     });
@@ -28,6 +46,6 @@ function isOkStatus(status: number) {
 
 export {
     sendOk,
-    sendError400,
-    sendError500
+    sendBadRequest,
+    sendInternalServerError
 };
